@@ -1,0 +1,6 @@
+framework module Pods_BTG_project {
+  umbrella header "Pods-BTG_project-umbrella.h"
+
+  export *
+  module * { export * }
+}
