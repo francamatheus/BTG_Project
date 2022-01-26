@@ -160,7 +160,6 @@
 				205480A026D03C9500D92B98 /* Info.plist */,
 				205480A126D03C9500D92B98 /* AppDelegate.swift */,
 				2054809526D03C9500D92B98 /* Assets.xcassets */,
-				2054809626D03C9500D92B98 /* Base.lproj */,
 				2054809726D03C9500D92B98 /* Data */,
 				2054808826D03C9500D92B98 /* Utils */,
 				2054807C26D03C9500D92B98 /* Views */,
@@ -242,14 +241,6 @@
 				20B947AA26D44AD700FBD881 /* InternetConnection.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		2054809626D03C9500D92B98 /* Base.lproj */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Base.lproj;
-			path = "../../desafio-ios-matheus-frança/desafio-ios-matheus-frança/Base.lproj";
 			sourceTree = "<group>";
 		};
 		2054809726D03C9500D92B98 /* Data */ = {

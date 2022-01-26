@@ -32,7 +32,7 @@ class CurrenciesViewController: UIViewController {
     
     // MARK: - Setup
     func setupNavBar() {
-        self.title = "Moedas"
+        self.title = "Currencies"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
@@ -46,7 +46,7 @@ class CurrenciesViewController: UIViewController {
     
     func setupSearchBar() {
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Buscar moeda"
+        searchBar.placeholder = "Search Currency"
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()

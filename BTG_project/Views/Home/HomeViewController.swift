@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, CurrencyDelegate {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var originCurrencyButton: UIButton!
     @IBOutlet weak var destinyCurrencyButton: UIButton!
@@ -26,29 +26,36 @@ class HomeViewController: UIViewController, CurrencyDelegate {
         self.hideKeyboardWhenTappedAround()
         setupLayout()
         setupNavBar()
-        outdatedLabel.text = "* Os dados podem estar desatualizados devido a falta de internet"
+        outdatedLabel.text = "* The data may be out of date due to lack of internet"
     }
     
-    func setupNavBar() {
-        self.title = "Conversor de Moedas"
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if valueTextField.text?.isEmpty == false {
+            fetchData()
+        }
+    }
+    
+    private func setupNavBar() {
+        self.title = "Currency Converter"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         setupButton(button: originCurrencyButton, text: originCurrency)
         setupButton(button: destinyCurrencyButton, text: destinyCurrency)
-        setupButton(button: calculateCurrencyButton, text: "Calcular")
+        setupButton(button: calculateCurrencyButton, text: "Calculate")
         setupTextField()
     }
     
-    func setupButton(button: UIButton, text: String) {
+    private func setupButton(button: UIButton, text: String) {
         button.backgroundColor = .themeColor
         button.layer.cornerRadius = 8
         button.setTitleColor(.white, for: .normal)
         button.setTitle(text, for: .normal)
     }
     
-    func setupTextField() {
+    private func setupTextField() {
         valueTextField.placeholder = "10"
         valueTextField.keyboardType = .numberPad
         valueTextField.textAlignment = .center
@@ -68,9 +75,9 @@ class HomeViewController: UIViewController, CurrencyDelegate {
         fetchData()
     }
     
-    func fetchData() {
+    private func fetchData() {
         guard let value = valueTextField.text, let doubleValue = Double(value) else {
-            errorAlert(message: "Campo de texto inválido")
+            errorAlert(message: "Invalid Field")
             return
         }
         LoadingOverlay.shared.showOverlay(view: self.view)
@@ -90,10 +97,12 @@ class HomeViewController: UIViewController, CurrencyDelegate {
         }
     }
     
-    func finishLoading() {
+    private func finishLoading() {
         LoadingOverlay.shared.hideOverlayView()
     }
-    
+}
+
+extension HomeViewController: CurrencyDelegate {
     func onOriginCurrencySelected(currency: String) {
         originCurrency = currency
         originCurrencyButton.setTitle(currency, for: .normal)
